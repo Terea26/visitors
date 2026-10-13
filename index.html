@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Praha Bonus Visitor · Do good in Prague</title>
+<meta name="description" content="Praha Bonus Visitor rewards travellers for good actions in Prague: arrive by train, explore beyond the centre, visit off-peak, clean up, eat local. Concept website.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6F1E7; --cream-2:#EFE5D2; --line:#E1D3B8; --card:#FFFDF8;
+  --ink:#1B1F2A; --ink-2:#3A3F4C; --muted:#5C6170;
+  --wine:#8B1A2B; --wine-dark:#5E0F1C; --gold:#D4A537; --green:#2F6B4A; --green-bg:#E3EFE6;
+  --busy:#B5452F; --busy-bg:#F6E1DA;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:var(--wine);text-decoration:none}
+a:hover{color:var(--wine-dark)}
+button{font-family:inherit;cursor:pointer}
+input,select,textarea{font-family:inherit;font-size:15px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.serif{font-family:'DM Serif Display',Georgia,serif;font-weight:400;letter-spacing:-.01em}
+.mono{font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:.06em;font-size:13px;text-transform:uppercase}
+.eyebrow{color:var(--wine)}
+h1.serif{font-size:clamp(42px,6.4vw,76px);line-height:1.02}
+h2.serif{font-size:clamp(34px,4.4vw,52px);line-height:1.08}
+h3.serif{font-size:26px;line-height:1.2}
+.lead{font-size:18px;color:var(--ink-2);max-width:640px}
+section{scroll-margin-top:80px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:14px 22px;font-weight:700;font-size:15px;border:1.5px solid transparent;transition:background .15s,color .15s}
+.btn-wine{background:var(--wine);color:#F6E7C8}
+.btn-wine:hover{background:var(--wine-dark);color:#F6E7C8}
+.btn-ghost{border-color:#CFC3AE;color:var(--ink);background:transparent}
+.btn-ghost:hover{background:var(--cream-2);color:var(--ink)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;border-radius:999px;padding:6px 12px}
+
+/* concept banner */
+.concept{background:var(--wine);color:#F6E7C8;font-size:13px;padding:9px 24px;text-align:center}
+.concept b{font-family:'JetBrains Mono',monospace;color:var(--gold);letter-spacing:.06em;margin-right:8px}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(246,241,231,.94);backdrop-filter:blur(10px);border-bottom:1px solid #E4DACA}
+.head{display:flex;align-items:center;gap:24px;padding:14px 24px;max-width:1200px;margin:0 auto;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;color:var(--ink)}
+.logo-mark{width:30px;height:30px;border-radius:50%;background:var(--gold);display:grid;place-items:center;color:var(--wine);font-family:'DM Serif Display',serif;font-size:19px}
+.logo-text{font-family:'DM Serif Display',serif;font-size:23px}
+.logo-tag{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.08em;background:var(--ink);color:var(--cream);border-radius:6px;padding:3px 7px}
+nav.main{display:flex;gap:22px;font-size:14px;font-weight:600;flex:1 1 0;min-width:0;overflow-x:auto;scrollbar-width:none}
+nav.main::-webkit-scrollbar{display:none}
+.head .btn{white-space:nowrap}
+nav.main a{color:var(--ink-2);white-space:nowrap}
+nav.main a:hover{color:var(--wine)}
+@media (max-width:900px){
+  .head{gap:10px 12px;padding:10px 16px;justify-content:space-between}
+  nav.main{order:3;flex:1 1 100%;gap:18px;overflow-x:auto;padding:4px 0 2px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+  nav.main::-webkit-scrollbar{display:none}
+  .head .btn{padding:9px 14px;font-size:13px}
+}
+@media (max-width:480px){.head .btn{display:none}}
+
+/* hero */
+.hero{padding:64px 0 72px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+.hero h1 em{color:var(--wine);font-style:italic}
+.hero .lead{margin-top:22px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.ticks{display:flex;gap:18px;flex-wrap:wrap;margin-top:26px;font-size:14px;font-weight:600;color:var(--ink-2)}
+.ticks span::before{content:"✓";color:var(--green);font-weight:800;margin-right:6px}
+.phone{background:var(--ink);border-radius:36px;padding:14px;max-width:360px;margin:0 auto;box-shadow:0 30px 60px -20px rgba(27,31,42,.45)}
+.screen{background:var(--cream);border-radius:26px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.screen-top{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:700;color:var(--muted)}
+.nudge{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px}
+.nudge-row{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px;font-weight:700}
+.lvl{font-size:12px;font-weight:800;border-radius:999px;padding:4px 10px;white-space:nowrap}
+.lvl.busy{background:var(--busy-bg);color:var(--busy)}
+.lvl.quiet{background:var(--green-bg);color:var(--green)}
+.offer{background:var(--wine);color:#F6E7C8;border-radius:18px;padding:16px}
+.offer small{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--gold);font-weight:700}
+.offer strong{display:block;font-family:'DM Serif Display',serif;font-weight:400;font-size:22px;line-height:1.2;margin:6px 0 4px}
+.swipe{margin-top:12px;background:rgba(246,231,200,.15);border-radius:999px;display:flex;align-items:center;gap:10px;padding:5px;font-size:13px;font-weight:700}
+.swipe i{width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--wine);display:grid;place-items:center;font-style:normal;font-weight:800}
+
+/* strip */
+.strip{background:var(--ink);color:var(--cream)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:36px 24px}
+@media (max-width:900px){.strip .wrap{grid-template-columns:1fr 1fr}}
+.strip b{display:block;font-family:'DM Serif Display',serif;font-weight:400;font-size:24px;color:var(--gold)}
+.strip span{font-size:14px;color:#C9C2B5}
+
+/* generic section */
+.sec{padding:96px 0}
+.sec-head{display:flex;flex-direction:column;gap:14px;margin-bottom:44px}
+.alt{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:900px){.steps{grid-template-columns:1fr}}
+.step{background:var(--card);border:1px solid #E4DACA;border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:10px}
+.step .num{font-family:'DM Serif Display',serif;font-size:48px;color:var(--gold);line-height:1}
+.step p{color:var(--ink-2);font-size:15px}
+
+/* better */
+.better{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:900px){.better{grid-template-columns:1fr}}
+.feat{background:var(--card);border:1px solid #E4DACA;border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:10px}
+.feat .ico{width:44px;height:44px;border-radius:12px;background:var(--cream-2);display:grid;place-items:center;font-size:22px}
+.feat p{color:var(--ink-2);font-size:15px}
+.feat .new{align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--wine);background:#F3E2E0;border-radius:6px;padding:3px 7px}
+
+/* deeds */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.filters button{border:1.5px solid #CFC3AE;background:transparent;color:var(--ink);border-radius:999px;padding:9px 16px;font-weight:700;font-size:14px}
+.filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.deeds{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:1000px){.deeds{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.deeds{grid-template-columns:1fr}}
+.deed{background:var(--card);border:1px solid #E4DACA;border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.deed-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.deed .cat{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--wine);text-transform:uppercase}
+.deed .area{font-size:12px;font-weight:700;color:var(--muted);background:var(--cream-2);border-radius:999px;padding:3px 9px;white-space:nowrap}
+.deed h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:22px;line-height:1.2}
+.deed .reward{display:flex;gap:10px;align-items:flex-start;background:var(--cream);border-radius:14px;padding:12px;font-size:14px;font-weight:600}
+.deed .reward b{color:var(--wine)}
+.deed .meta{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--muted);font-weight:600;margin-top:auto}
+.deed .bonus{color:var(--green)}
+.empty{display:none;color:var(--muted);font-weight:600;padding:20px 0}
+
+/* crowd */
+.crowd-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+@media (max-width:900px){.crowd-grid{grid-template-columns:1fr}}
+.swaps{display:flex;flex-direction:column;gap:14px}
+.swap{background:var(--card);border:1px solid #E4DACA;border-radius:20px;padding:18px;display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center}
+@media (max-width:560px){.swap{grid-template-columns:1fr;text-align:left}.swap .arrow{transform:rotate(90deg);justify-self:start}}
+.swap .place{display:flex;flex-direction:column;gap:6px}
+.swap .place b{font-size:16px}
+.swap .arrow{font-size:22px;color:var(--gold);font-weight:800}
+.swap .lvl{align-self:flex-start}
+.swap .how{font-size:13px;color:var(--muted);font-weight:600}
+.note{font-size:13px;color:var(--muted);margin-top:12px}
+
+/* areas */
+.areas{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:900px){.areas{grid-template-columns:1fr}}
+.area-card{border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:12px}
+.area-card.c1{background:var(--busy-bg);border:1px solid #EBC9BE}
+.area-card.c2{background:var(--green-bg);border:1px solid #C7DCCD}
+.area-card.c3{background:var(--card);border:1px solid #E4DACA}
+.area-card ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.area-card li{background:rgba(255,255,255,.7);border-radius:999px;padding:5px 11px;font-size:13px;font-weight:700}
+.area-card p{color:var(--ink-2);font-size:15px}
+
+/* impact */
+.impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media (max-width:900px){.impact-grid{grid-template-columns:1fr}}
+.postcard{background:var(--wine);color:#F6E7C8;border-radius:26px;padding:34px;position:relative;overflow:hidden}
+.postcard::after{content:"";position:absolute;right:-50px;top:-50px;width:140px;height:140px;border-radius:50%;background:var(--gold);opacity:.9}
+.postcard .mono{color:var(--gold);position:relative;z-index:1;display:block;padding-right:80px}
+.postcard h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:34px;line-height:1.1;margin:10px 0 22px;position:relative;z-index:1;max-width:80%}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stats div{background:rgba(246,231,200,.12);border-radius:14px;padding:14px}
+.stats b{display:block;font-family:'DM Serif Display',serif;font-weight:400;font-size:30px;color:#FFF3D6}
+.stats span{font-size:13px;color:#F0D9DC}
+.postcard .foot{margin-top:18px;font-size:13px;color:#F0D9DC}
+
+/* compare */
+table.cmp{width:100%;border-collapse:collapse;background:var(--card);border:1px solid #E4DACA;border-radius:20px;overflow:hidden;font-size:15px}
+.cmp th,.cmp td{padding:14px 18px;text-align:left;border-bottom:1px solid #EDE4D3;vertical-align:top}
+.cmp th{background:var(--ink);color:var(--cream);font-size:14px}
+.cmp tr:last-child td{border-bottom:0}
+.cmp td:first-child{font-weight:700;width:24%}
+.cmp td:last-child{color:var(--green);font-weight:600}
+.table-scroll{overflow-x:auto;border-radius:20px}
+
+/* partners */
+.partners{background:var(--ink);color:var(--cream)}
+.partners .lead{color:#C9C2B5}
+.p-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media (max-width:900px){.p-grid{grid-template-columns:1fr}}
+.p-list{display:flex;flex-direction:column;gap:14px;margin-top:28px}
+.p-item{border:1px solid #3A3F4C;border-radius:18px;padding:18px 20px}
+.p-item b{display:block;font-size:16px;margin-bottom:4px;color:#FFF3D6}
+.p-item span{font-size:14px;color:#C9C2B5}
+form.join{background:var(--cream);color:var(--ink);border-radius:24px;padding:30px;display:flex;flex-direction:column;gap:14px}
+form.join label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:700;color:var(--ink-2)}
+form.join input,form.join select,form.join textarea{border:1.5px solid #D8CCB6;border-radius:12px;padding:12px 14px;background:#FFFDF8;color:var(--ink)}
+form.join input:focus,form.join select:focus,form.join textarea:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+.thanks{display:none;background:var(--green-bg);color:var(--green);border-radius:12px;padding:14px;font-weight:700;font-size:14px}
+
+/* faq */
+.faq{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+details{background:var(--card);border:1px solid #E4DACA;border-radius:18px;padding:0 22px}
+summary{list-style:none;cursor:pointer;padding:20px 0;font-weight:700;font-size:17px;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:22px;color:var(--wine);line-height:1}
+details[open] summary::after{content:"−"}
+details p{padding:0 0 20px;color:var(--ink-2)}
+
+/* cta + footer */
+.cta{background:var(--gold);border-radius:28px;padding:48px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.cta h2{color:var(--ink)}
+footer{border-top:1px solid #E4DACA;padding:48px 0 60px;font-size:14px;color:var(--muted)}
+.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px}
+@media (max-width:800px){.f-grid{grid-template-columns:1fr 1fr}}
+.f-grid h4{font-size:13px;color:var(--ink);margin-bottom:10px}
+.f-grid a{display:block;color:var(--muted);margin-bottom:6px}
+.f-grid a:hover{color:var(--wine)}
+</style>
+</head>
+<body>
+
+<div class="concept"><b>CONCEPT</b>This is a concept website for a proposed programme. All offers and partners shown are examples, not live rewards.</div>
+
+<header>
+  <div class="head">
+    <a class="logo" href="#top">
+      <span class="logo-mark">P</span>
+      <span class="logo-text">Praha Bonus</span>
+      <span class="logo-tag">VISITOR</span>
+    </a>
+    <nav class="main" aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#deeds">Good deeds</a>
+      <a href="#quieter">Quieter now</a>
+      <a href="#areas">Areas</a>
+      <a href="#impact">Your impact</a>
+      <a href="#partners">For partners</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-wine" href="#deeds">Find a good deed</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="chip" style="background:var(--cream-2);border:1px solid var(--line);color:#5A4A2E"><span style="width:8px;height:8px;border-radius:50%;background:#3E8E5A"></span>The tourist edition of Praha Bonus</span>
+      <h1 class="serif" style="margin-top:22px">Do good in Prague. <em>Prague gives back.</em></h1>
+      <p class="lead">Arrive by train, explore beyond the Old Town, visit at quieter times or help clean the Vltava riverbank, and get local rewards: free coffee, museum discounts, guided walks and boat rides.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-wine" href="#deeds">Find a good deed →</a>
+        <a class="btn btn-ghost" href="#how">How it works</a>
+      </div>
+      <div class="ticks"><span>No app to download</span><span>No account</span><span>Free</span><span>In 6 languages</span></div>
+    </div>
+    <div>
+      <div class="phone" aria-label="Example of the mobile experience">
+        <div class="screen">
+          <div class="screen-top"><span>Your stay · 14–18 May</span><span>EN ▾</span></div>
+          <div class="nudge">
+            <div class="mono" style="font-size:11px;color:var(--muted);margin-bottom:8px">Quieter right now</div>
+            <div class="nudge-row"><span>Charles Bridge</span><span class="lvl busy">Very busy</span></div>
+            <div style="height:8px"></div>
+            <div class="nudge-row"><span>Vyšehrad · 15 min by tram</span><span class="lvl quiet">Quiet</span></div>
+          </div>
+          <div class="offer">
+            <small>EXPLORE BEYOND THE CENTRE · BONUS</small>
+            <strong>Walk the Vyšehrad story trail, get a free coffee</strong>
+            <span style="font-size:13px;color:#F0D9DC">Partner café below the fortress · scan the QR code at 3 stops</span>
+            <div class="swipe"><i>›</i>Swipe to start</div>
+          </div>
+          <div style="font-size:12px;color:var(--muted);text-align:center">Illustration with example data</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="wrap">
+    <div><b>Good deeds</b><span>Travel, explore, clean up, volunteer, eat local</span></div>
+    <div><b>Local rewards</b><span>From cafés, museums, guides and boat rentals</span></div>
+    <div><b>Beyond the centre</b><span>Bonus rewards in quieter neighbourhoods</span></div>
+    <div><b>Your impact</b><span>A summary of your good deeds at the end of your stay</span></div>
+  </div>
+</div>
+
+<!-- HOW -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono eyebrow">How it works</span>
+      <h2 class="serif">Pick a deed. Do it. Enjoy your reward.</h2>
+      <p class="lead">Open the mobile website on your phone, choose your travel dates and see what's available during your stay. No download, no sign-up.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="num">1</span><h3 class="serif">Pick a good deed</h3><p>Browse by area, type of deed or reward. Filter for families, accessibility or what's open now.</p></div>
+      <div class="step"><span class="num">2</span><h3 class="serif">Start at the partner</h3><p>Go to the partner and swipe to start. Scan the partner's QR code to confirm you're there. That takes two seconds and needs no personal data.</p></div>
+      <div class="step"><span class="num">3</span><h3 class="serif">Show your screen</h3><p>When you're done, show the confirmed reward on your phone and enjoy it. Then find the next one.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BETTER -->
+<section class="sec alt" id="better">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono eyebrow">What makes it different</span>
+      <h2 class="serif">Built for Prague's real challenge: everyone in the same five streets</h2>
+      <p class="lead">Rewards for green travel are a proven idea in other European cities. Praha Bonus Visitor adds features designed for a city where crowds gather in the centre while the rest of Prague is waiting to be discovered.</p>
+    </div>
+    <div class="better">
+      <div class="feat"><span class="ico">🧭</span><span class="new">NEW</span><h3 class="serif">Quieter-right-now nudges</h3><p>When a hotspot is crowded, the site suggests a quieter place nearby and adds a bonus reward for going there.</p></div>
+      <div class="feat"><span class="ico">🕘</span><span class="new">NEW</span><h3 class="serif">Off-peak bonuses</h3><p>Extra rewards for visiting museums, viewpoints and landmarks early in the morning or on weekdays.</p></div>
+      <div class="feat"><span class="ico">📍</span><span class="new">NEW</span><h3 class="serif">Simple QR check-in</h3><p>A QR code at every partner confirms your visit. Fair for partners, still no account and no tracking for you.</p></div>
+      <div class="feat"><span class="ico">🗺️</span><span class="new">NEW</span><h3 class="serif">Neighbourhood story trails</h3><p>Self-guided walks with QR stops in Vyšehrad, Žižkov, Karlín, Holešovice and Letná, each ending with a local reward.</p></div>
+      <div class="feat"><span class="ico">🧾</span><span class="new">NEW</span><h3 class="serif">Your impact postcard</h3><p>At the end of your stay, get a shareable summary: car trips avoided, litter collected, neighbourhoods visited, local businesses supported.</p></div>
+      <div class="feat"><span class="ico">👨‍👩‍👧</span><span class="new">NEW</span><h3 class="serif">Family and access filters</h3><p>Find deeds suitable for children, step-free locations and quiet spaces, in English, Czech, German, Spanish, Italian and French.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEEDS -->
+<section class="sec" id="deeds">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono eyebrow">Good deeds and rewards</span>
+      <h2 class="serif">What you can do, and what you get</h2>
+      <p class="lead">Example deeds to show how the programme would work. Partners choose their own deed and reward.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter good deeds">
+      <button aria-pressed="true" data-f="all">All</button>
+      <button aria-pressed="false" data-f="travel">Green travel</button>
+      <button aria-pressed="false" data-f="explore">Beyond the centre</button>
+      <button aria-pressed="false" data-f="offpeak">Off-peak</button>
+      <button aria-pressed="false" data-f="clean">Clean up</button>
+      <button aria-pressed="false" data-f="help">Volunteer & learn</button>
+      <button aria-pressed="false" data-f="food">Eat local</button>
+      <button aria-pressed="false" data-f="stay">Stay longer</button>
+      <button aria-pressed="false" data-f="family">Families</button>
+    </div>
+    <div class="deeds" id="deedList"></div>
+    <p class="empty" id="deedEmpty">No example deeds in this category yet.</p>
+  </div>
+</section>
+
+<!-- QUIETER -->
+<section class="sec alt" id="quieter">
+  <div class="wrap crowd-grid">
+    <div class="sec-head" style="margin:0">
+      <span class="mono eyebrow">Quieter right now</span>
+      <h2 class="serif">Skip the crush. Get a bonus for it.</h2>
+      <p class="lead">Praha Bonus Visitor would use anonymous visitor counts to show how busy popular places are and suggest a quieter alternative nearby. Choose the quieter option and the partner adds a bonus reward.</p>
+      <p class="lead">Good for you (no queues, better photos), good for residents, and good for local businesses outside the centre.</p>
+    </div>
+    <div>
+      <div class="swaps">
+        <div class="swap">
+          <div class="place"><b>Charles Bridge</b><span class="lvl busy">Very busy</span></div>
+          <span class="arrow">→</span>
+          <div class="place"><b>Vyšehrad</b><span class="lvl quiet">Quiet</span><span class="how">15 min by tram · +1 bonus</span></div>
+        </div>
+        <div class="swap">
+          <div class="place"><b>Old Town Square</b><span class="lvl busy">Very busy</span></div>
+          <span class="arrow">→</span>
+          <div class="place"><b>Karlín</b><span class="lvl quiet">Quiet</span><span class="how">10 min by metro · +1 bonus</span></div>
+        </div>
+        <div class="swap">
+          <div class="place"><b>Prague Castle, midday</b><span class="lvl busy">Busy</span></div>
+          <span class="arrow">→</span>
+          <div class="place"><b>Prague Castle, before 10:00</b><span class="lvl quiet">Quieter</span><span class="how">Off-peak · +1 bonus</span></div>
+        </div>
+        <div class="swap">
+          <div class="place"><b>Petřín viewpoint</b><span class="lvl busy">Busy</span></div>
+          <span class="arrow">→</span>
+          <div class="place"><b>Letná Park</b><span class="lvl quiet">Quiet</span><span class="how">20 min on foot · +1 bonus</span></div>
+        </div>
+      </div>
+      <p class="note">Illustration with example busyness levels, not live data.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="sec" id="areas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono eyebrow">Areas</span>
+      <h2 class="serif">Three ways to see Prague</h2>
+    </div>
+    <div class="areas">
+      <div class="area-card c1">
+        <span class="mono" style="color:var(--busy)">The centre</span>
+        <h3 class="serif">The classics, at the right time</h3>
+        <p>Rewards here are mostly for off-peak visits and green travel, so you see the famous sights without the crowds.</p>
+        <ul><li>Old Town</li><li>Malá Strana</li><li>Prague Castle</li><li>Josefov</li></ul>
+      </div>
+      <div class="area-card c2">
+        <span class="mono" style="color:var(--green)">Neighbourhoods · bonus zone</span>
+        <h3 class="serif">Where Praguers actually live</h3>
+        <p>Story trails, local cafés, parks and riverside bars, with bonus rewards for exploring them.</p>
+        <ul><li>Vyšehrad</li><li>Žižkov</li><li>Vinohrady</li><li>Karlín</li><li>Holešovice</li><li>Letná</li><li>Smíchov</li><li>Troja</li></ul>
+      </div>
+      <div class="area-card c3">
+        <span class="mono eyebrow">Beyond Prague · by train</span>
+        <h3 class="serif">Day trips without a car</h3>
+        <p>Take the train to a town or castle outside the city and get a reward from a local partner there.</p>
+        <ul><li>Kutná Hora</li><li>Karlštejn</li><li>Mělník</li><li>Český Šternberk</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="sec alt" id="impact">
+  <div class="wrap impact-grid">
+    <div class="sec-head" style="margin:0">
+      <span class="mono eyebrow">Your impact</span>
+      <h2 class="serif">Take home more than photos</h2>
+      <p class="lead">On your last day you get a personal impact postcard to keep or share. It's created on your phone: no account and no personal data are needed.</p>
+      <p class="lead">Every good deed also counts toward a city-wide total shown on this website, so visitors can see what they achieve together.</p>
+    </div>
+    <div class="postcard">
+      <span class="mono">Your Prague · 14–18 May</span>
+      <h3>Thank you for being a good guest in Prague.</h3>
+      <div class="stats">
+        <div><b>6</b><span>good deeds</span></div>
+        <div><b>4</b><span>neighbourhoods explored</span></div>
+        <div><b>2 kg</b><span>litter collected</span></div>
+        <div><b>5</b><span>local businesses supported</span></div>
+      </div>
+      <p class="foot">Example postcard · Share · Save image</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="sec" id="compare">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono eyebrow">Inspired by proven ideas</span>
+      <h2 class="serif">The good parts, plus what Prague needs</h2>
+      <p class="lead">Copenhagen's tourism office runs a well-known reward programme for green travel choices. Praha Bonus Visitor keeps what works and adds features for Prague.</p>
+    </div>
+    <div class="table-scroll">
+    <table class="cmp">
+      <tr><th>Feature</th><th>Typical green-travel reward programme</th><th>Praha Bonus Visitor</th></tr>
+      <tr><td>Getting started</td><td>Mobile website, no account</td><td>Same: mobile website, no account</td></tr>
+      <tr><td>Proof of the good deed</td><td>Mostly trust: show your screen</td><td>QR check-in at the partner, still no personal data</td></tr>
+      <tr><td>Crowds</td><td>Not addressed directly</td><td>Quieter-right-now suggestions and bonus rewards</td></tr>
+      <tr><td>Timing</td><td>Opening hours shown</td><td>Off-peak bonuses at museums and landmarks</td></tr>
+      <tr><td>Neighbourhoods</td><td>Area filter</td><td>Story trails with QR stops and a bonus zone</td></tr>
+      <tr><td>Your impact</td><td>Counters in your profile</td><td>Shareable impact postcard plus a city-wide total</td></tr>
+      <tr><td>Families and access</td><td>Some family offers</td><td>Filters for children, step-free access and quiet spaces</td></tr>
+      <tr><td>Residents</td><td>Separate</td><td>Part of Praha Bonus, the rewards wallet for residents</td></tr>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="sec partners" id="partners">
+  <div class="wrap p-grid">
+    <div>
+      <span class="mono" style="color:var(--gold)">For partners</span>
+      <h2 class="serif" style="margin:14px 0">Welcome the visitors you want</h2>
+      <p class="lead">Museums, cafés, guides, boat rentals, hotels and attractions choose their own good deed and reward. You reach travellers who are curious, considerate and ready to explore.</p>
+      <div class="p-list">
+        <div class="p-item"><b>You decide the deed and the reward</b><span>For example: arrive by tram and get 20% off, or join a clean-up and get a free drink.</span></div>
+        <div class="p-item"><b>Fill your quiet hours</b><span>Offer rewards only at off-peak times, and only when you have space.</span></div>
+        <div class="p-item"><b>Simple to run</b><span>A printed QR code at your counter. Staff just check the confirmed reward on the visitor's screen.</span></div>
+        <div class="p-item"><b>See your results</b><span>A simple dashboard with check-ins and claimed rewards, with no personal data.</span></div>
+      </div>
+    </div>
+    <form class="join" id="joinForm">
+      <h3 class="serif">Register your interest</h3>
+      <label>Organisation<input name="org" required></label>
+      <label>Contact person<input name="name" required></label>
+      <label>Email<input type="email" name="email" required></label>
+      <label>Type of partner
+        <select name="type">
+          <option>Museum or gallery</option><option>Café, restaurant or bar</option><option>Tour guide or walking tour</option>
+          <option>Boat, bike or scooter rental</option><option>Hotel or apartment</option><option>Attraction</option><option>Other</option>
+        </select>
+      </label>
+      <label>Area
+        <select name="area"><option>The centre</option><option>Neighbourhoods</option><option>Beyond Prague</option></select>
+      </label>
+      <label>Your idea for a good deed and reward (optional)<textarea name="idea" rows="3"></textarea></label>
+      <button class="btn btn-wine" type="submit" style="justify-content:center">Send</button>
+      <p class="thanks" id="thanks" role="status">Thank you. This is a concept website, so your details were not sent anywhere.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head" style="align-items:center;text-align:center">
+      <span class="mono eyebrow">FAQ</span>
+      <h2 class="serif">Good to know</h2>
+    </div>
+    <div class="faq">
+      <details open><summary>Do I need to download an app or create an account?</summary><p>No. Praha Bonus Visitor is a mobile website. Open it in your phone's browser, choose your travel dates and start. You don't need to give your name or email.</p></details>
+      <details><summary>How do I prove I did the good deed?</summary><p>Swipe to start, scan the QR code at the partner, and show the confirmed reward on your screen when you're done. Some partners also check, for example a bag of collected litter or a train ticket.</p></details>
+      <details><summary>Is it free?</summary><p>Yes. Taking part is free. Rewards are free items or discounts offered by partners.</p></details>
+      <details><summary>Do you track my location?</summary><p>No. The QR code confirms you're at the partner. Busyness levels come from anonymous visitor counts, never from your phone.</p></details>
+      <details><summary>Why are there extra rewards outside the centre?</summary><p>A few streets in the centre get very crowded while many great neighbourhoods are quiet. Bonus rewards spread visitors out, which means shorter queues for you and a better balance for residents.</p></details>
+      <details><summary>Can I join with children?</summary><p>Yes. Use the Families filter to find deeds and rewards suitable for children.</p></details>
+      <details><summary>I live in Prague. Can I take part?</summary><p>Residents have their own programme, Praha Bonus, with a points wallet for everyday good deeds. Visitors and residents share many of the same partners.</p></details>
+      <details><summary>Who is behind it?</summary><p>Praha Bonus Visitor is a concept for a programme run by an independent operator together with the city, its tourism partners and local businesses. All offers on this website are examples.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:0 0 96px">
+  <div class="wrap">
+    <div class="cta">
+      <h2 class="serif">Be the kind of guest Prague remembers.</h2>
+      <a class="btn" style="background:var(--ink);color:var(--cream)" href="#deeds">Find a good deed →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap f-grid">
+    <div>
+      <a class="logo" href="#top" style="margin-bottom:12px"><span class="logo-mark">P</span><span class="logo-text">Praha Bonus</span><span class="logo-tag">VISITOR</span></a>
+      <p>Concept website. All offers, partners and numbers are examples.</p>
+    </div>
+    <div><h4>Visitors</h4><a href="#how">How it works</a><a href="#deeds">Good deeds</a><a href="#quieter">Quieter now</a><a href="#faq">FAQ</a></div>
+    <div><h4>Partners</h4><a href="#partners">Become a partner</a><a href="#compare">Why Praha Bonus Visitor</a></div>
+    <div><h4>Residents</h4><a href="https://terea26.github.io/praha/">Praha Bonus for residents</a></div>
+  </div>
+</footer>
+
+<script>
+const DEEDS = [
+  {c:'travel', cat:'Green travel', area:'Centre', t:'Arrive in Prague by train', r:'Free coffee and pastry', p:'A café near the main station', m:['Show your train ticket'], fam:false},
+  {c:'travel', cat:'Green travel', area:'Neighbourhoods', t:'Reach the museum on foot, by bike or by tram', r:'20% off your ticket', p:'A city museum in Holešovice', m:['QR check-in'], fam:true},
+  {c:'travel', cat:'Green travel', area:'Beyond Prague', t:'Take the train to Kutná Hora', r:'25% off a guided town walk', p:'A local guide in Kutná Hora', m:['Show your train ticket','Booking required'], fam:true},
+  {c:'explore', cat:'Beyond the centre', area:'Neighbourhoods', t:'Walk the Vyšehrad story trail', r:'Free coffee at the end', p:'A café below the fortress', m:['3 QR stops'], bonus:true, fam:true},
+  {c:'explore', cat:'Beyond the centre', area:'Neighbourhoods', t:'Discover Žižkov\'s pubs and history', r:'Free lemonade or local beer', p:'A neighbourhood pub in Žižkov', m:['4 QR stops','18+ for beer'], bonus:true},
+  {c:'explore', cat:'Beyond the centre', area:'Neighbourhoods', t:'Explore Karlín\'s riverside', r:'Free scoop of ice cream', p:'An ice-cream shop in Karlín', m:['QR check-in'], bonus:true, fam:true},
+  {c:'offpeak', cat:'Off-peak', area:'Centre', t:'Visit the gallery before 11:00 on a weekday', r:'Free entry for a second person', p:'A gallery in the Old Town', m:['QR check-in'], bonus:true},
+  {c:'offpeak', cat:'Off-peak', area:'Centre', t:'See the castle area before 10:00', r:'Free hot drink', p:'A café in Hradčany', m:['QR check-in'], bonus:true, fam:true},
+  {c:'clean', cat:'Clean up', area:'Neighbourhoods', t:'Join the Saturday Vltava riverbank clean-up', r:'One hour of free paddle-boat rental', p:'A boat rental on the river', m:['Sat 9:00–11:00','Booking required'], fam:true},
+  {c:'clean', cat:'Clean up', area:'Neighbourhoods', t:'Collect a bag of litter in Stromovka park', r:'Free bike rental for the day', p:'A bike rental near Letná', m:['Bags and gloves provided'], fam:false},
+  {c:'help', cat:'Volunteer & learn', area:'Neighbourhoods', t:'Two hours in a community garden', r:'Free lunch made from the garden', p:'A community garden in Holešovice', m:['Booking required'], fam:true},
+  {c:'help', cat:'Volunteer & learn', area:'Neighbourhoods', t:'Help count birds in Troja', r:'20% off a nature centre visit', p:'A nature centre in Troja', m:['Citizen science','Guide included'], fam:true},
+  {c:'help', cat:'Volunteer & learn', area:'Neighbourhoods', t:'Learn 10 Czech phrases', r:'Free drink to practise them', p:'A language café in Vinohrady', m:['Wed 18:00'], fam:false},
+  {c:'help', cat:'Volunteer & learn', area:'Neighbourhoods', t:'Bring something to fix at a repair café', r:'Free repair help and coffee', p:'A repair café in Smíchov', m:['Monthly'], fam:true},
+  {c:'food', cat:'Eat local', area:'Centre', t:'Choose the plant-based dish of the day', r:'30% off', p:'A bistro in Malá Strana', m:['QR check-in'], fam:true},
+  {c:'food', cat:'Eat local', area:'Neighbourhoods', t:'Shop at a farmers\' market with your own bag', r:'Free taste of local cheese', p:'A market stand at Náplavka', m:['Sat mornings'], fam:true},
+  {c:'stay', cat:'Stay longer', area:'Neighbourhoods', t:'Stay 4 nights or more', r:'50% off a neighbourhood walking tour', p:'A local tour guide', m:['Show your booking'], fam:true},
+  {c:'stay', cat:'Stay longer', area:'Beyond Prague', t:'Add a night outside Prague', r:'Free breakfast for two', p:'A guesthouse in Mělník', m:['Booking required'], fam:true},
+  {c:'family', cat:'Families', area:'Neighbourhoods', t:'Travel with kids by public transport', r:'Free children\'s workshop', p:'A children\'s museum workshop', m:['Ages 5–12','Booking required'], fam:true},
+];
+const list = document.getElementById('deedList'), empty = document.getElementById('deedEmpty');
+const esc = s => s.replace(/[&<>"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+function render(f){
+  const items = DEEDS.filter(d => f==='all' || d.c===f || (f==='family' && d.fam));
+  list.innerHTML = items.map(d => `
+    <article class="deed">
+      <div class="deed-top"><span class="cat">${esc(d.cat)}</span><span class="area">${esc(d.area)}</span></div>
+      <h3>${esc(d.t)}</h3>
+      <div class="reward"><span aria-hidden="true">🎁</span><span><b>Reward:</b> ${esc(d.r)}</span></div>
+      <div class="meta"><span>${esc(d.p)}</span>${d.m.map(x=>`<span>· ${esc(x)}</span>`).join('')}${d.bonus?'<span class="bonus">· +1 bonus</span>':''}${d.fam?'<span>· Family friendly</span>':''}</div>
+    </article>`).join('');
+  empty.style.display = items.length ? 'none' : 'block';
+}
+document.querySelectorAll('.filters button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.filters button').forEach(x => x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
+  render(b.dataset.f);
+}));
+render('all');
+document.getElementById('joinForm').addEventListener('submit', e => {
+  e.preventDefault();
+  document.getElementById('thanks').style.display = 'block';
+  e.target.querySelector('button[type=submit]').disabled = true;
+});
+</script>
+</body>
+</html>
